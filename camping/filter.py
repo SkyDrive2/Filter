@@ -1,19 +1,9 @@
-from asyncio.windows_events import NULL
 import json
 from json import load
 
-# read key txt to list
-
-
-def read_key_txt(key_location):
-    f = open("./camping/filter_keywords/"+key_location, 'r' , encoding = 'utf-8')
-    data = f.read().strip()
-    data_in_list = data.split("\n")
-    # print(data_in_list)
-    f.close()
-    return data_in_list
-
 # compare content with filter
+
+
 def compare(key_list, content_list):
     for content in content_list:
         for key in key_list:
@@ -21,25 +11,30 @@ def compare(key_list, content_list):
                 return content
     return None
 
+# all key in output
 
-# 處理內文
+
 def fil_content(content, dic):
+    f = open('./camping/active/filter_key_words.json', "r", encoding="utf-8")
+    data = json.load(f)
+    f.close()
     dic["content"] = content
     content_in_line = content.split("\n")
-    # print(content_in_line)
-    dic["activity_beg_time"] = compare(read_key_txt("activity_beg_time.txt"), content_in_line)
-    dic["activity_end_time"] = compare(read_key_txt("activity_end_time.txt"), content_in_line)
-    dic["apply_beg_time"] = compare(read_key_txt("apply_beg_time.txt"), content_in_line)
-    dic["apply_end_time"] = compare(read_key_txt("apply_end_time.txt"), content_in_line)
-    dic["contact_info"] = compare(read_key_txt("contact_info.txt"), content_in_line)
-    dic["cost"] = compare(read_key_txt("cost.txt"), content_in_line)
-    dic["host"] = compare(read_key_txt("host.txt"), content_in_line)
-    dic["picture"] = compare(read_key_txt("picture.txt"), content_in_line)
-    dic["position"] = compare(read_key_txt("position.txt"), content_in_line)
-    dic["recruitment_obj"] = compare(read_key_txt("recruitment_obj.txt"), content_in_line)
-    dic["sources"] = compare(read_key_txt("sources.txt"), content_in_line)
-    dic["subtitle"] = compare(read_key_txt("subtitle.txt"), content_in_line)
-    dic["tag"] = compare(read_key_txt("tag.txt"), content_in_line)
+    dic["activity_beg_time"] = compare(
+        data["activity_beg_time"], content_in_line)
+    dic["activity_end_time"] = compare(
+        data["activity_end_time"], content_in_line)
+    dic["apply_beg_time"] = compare(data["apply_beg_time"], content_in_line)
+    dic["apply_end_time"] = compare(data["apply_end_time"], content_in_line)
+    dic["contact_info"] = compare(data["contact_info"], content_in_line)
+    dic["cost"] = compare(data["cost"], content_in_line)
+    dic["host"] = compare(data["host"], content_in_line)
+    dic["picture"] = compare(data["picture"], content_in_line)
+    dic["position"] = compare(data["position"], content_in_line)
+    dic["recruitment_obj"] = compare(data["recruitment_obj"], content_in_line)
+    dic["sources"] = compare(data["sources"], content_in_line)
+    dic["subtitle"] = compare(data["subtitle"], content_in_line)
+    dic["tag"] = compare(data["tag"], content_in_line)
     return
 
 # 處理index.json
@@ -54,10 +49,12 @@ def fil_obj(obj):
     return out_dic
 
 
+# handle camping folder
 f = open('./camping/active/index.json', "r", encoding="utf-8")
 data = json.load(f)
 f.close()
 
+# write output json
 with open('./camping/active/filter_after.json', 'w', encoding='utf-8') as jsonfile:
     out_list = []
     for obj in data:
