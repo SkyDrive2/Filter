@@ -68,6 +68,10 @@ f_developerWeb = open(
 data_developerWeb = json.load(f_developerWeb)
 f_developerWeb.close()
 
+# handle activity folder
+def load_json_folder(folder_road):
+    return
+
 # write output json
 with open('./filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfile:
     out_list = []
