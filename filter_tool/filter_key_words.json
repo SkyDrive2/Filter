@@ -1,11 +1,11 @@
 
 {
-    "activity_beg_time" : ["活動日期","開課期間","決賽時間"],
+    "activity_beg_time" : ["活動日期","開課期間","決賽時間","初賽","決賽","活動時間"],
     "activity_end_time" : ["結束日期"],
-    "apply_beg_time" : ["開放報名時間","報名自即日"],
+    "apply_beg_time" : ["開放報名時間","報名自即日","報名日期"],
     "apply_end_time" : ["報名結束時間"],
-    "apply_int_site" : ["報名網址"],
-    "contact_info" : ["活動洽詢","逕洽"],
+    "apply_int_site" : ["報名網址","上網登錄報名"],
+    "contact_info" : ["活動洽詢","洽","信箱","聯絡方式"],
     "cost" : ["營隊費用"],
     "host" : ["主辦單位"],
     "picture" : ["照片"],
