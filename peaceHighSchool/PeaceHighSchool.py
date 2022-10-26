@@ -9,7 +9,7 @@ url = "http://www.hpsh.tp.edu.tw/news/u_news_v1.asp?id=%7BB821C671-C9EA-44BC-A7C
 headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}
 
 res = requests.get(url,headers = headers)
-
+print("ok" if res.ok else "connection failed")
 res.encoding='utf-8'
 
 soup = BeautifulSoup(res.text,"html.parser")
@@ -43,12 +43,20 @@ for title in url_list:
     sm_url = url_soup.find_all("td", class_="C-tableA3")
 
     contents = []
+
     content = ""
     for url in sm_url[4]:
         contents.append(url.text)
+    # print(contents)
+    # print(len(contents))
     for content in contents:
-        content+=content+"\n"
+        content += "\n"
     url_content.append(content)
+    
+
+# for i in range(0,197):
+#     print(url_content[i])
+#     print("==={}===".format(i))
 
 print("載入完成 即將轉成JSON格式")
 
