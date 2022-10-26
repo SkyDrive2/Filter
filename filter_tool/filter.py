@@ -50,36 +50,18 @@ def fil_obj(obj):
     fil_content(obj["content"], out_dic)
     return out_dic
 
-
-# handle camping folder
-f_camping = open('./camping/active/index.json', "r", encoding="utf-8")
-data_camping = json.load(f_camping)
-f_camping.close()
-
-# handle peaceHighSchool folder
-f_peaceHighSchool = open(
-    './peaceHighSchool/projects/index.json', "r", encoding="utf-8")
-data_peaceHighSchool = json.load(f_peaceHighSchool)
-f_peaceHighSchool.close()
-
-# handle developWeb folder
-f_developerWeb = open(
-    './developerWeb/projects/index.json', "r", encoding="utf-8")
-data_developerWeb = json.load(f_developerWeb)
-f_developerWeb.close()
-
 # handle activity folder
 def load_json_folder(folder_road):
-    return
+    f = open('./'+ folder_road + '/projects/index.json', 'r',encoding = 'utf-8')
+    data = json.load(f)
+    f.close()
+    list = []
+    for obj in data:
+        list.append(fil_obj(obj))
+    return list
 
 # write output json
 with open('./filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfile:
-    out_list = []
-    for obj in data_camping:
-        out_list.append(fil_obj(obj))
-    for obj in data_peaceHighSchool:
-        out_list.append(fil_obj(obj))
-    for obj in data_developerWeb:
-        out_list.append(fil_obj(obj))
+    out_list = load_json_folder("camping") + load_json_folder("developerWeb") + load_json_folder("peaceHighSchool")
     json.dump(out_list, jsonfile, ensure_ascii=False, indent=4)
 jsonfile.close()
