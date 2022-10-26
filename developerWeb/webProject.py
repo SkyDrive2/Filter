@@ -56,8 +56,9 @@ def get_url(checker):
         article = {           #build a dic for one article
             "url" : url_content,
             "title" : con_title,
-            "id" : id,
-            "content" : body_str
+            "content" : body_str,
+            "date" : None,
+            "id" : 0,
         }
 
         if not os.path.isfile("./projects/index.json"): # initailize the json file
