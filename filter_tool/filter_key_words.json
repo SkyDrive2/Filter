@@ -1,17 +1,17 @@
 
 {
-    "activity_beg_time" : ["活動日期","開課期間"],
+    "activity_beg_time" : ["活動日期","開課期間","決賽時間"],
     "activity_end_time" : ["結束日期"],
-    "apply_beg_time" : ["開放報名時間"],
+    "apply_beg_time" : ["開放報名時間","報名自即日"],
     "apply_end_time" : ["報名結束時間"],
     "apply_int_site" : ["報名網址"],
-    "contact_info" : ["活動洽詢"],
+    "contact_info" : ["活動洽詢","逕洽"],
     "cost" : ["營隊費用"],
     "host" : ["主辦單位"],
     "picture" : ["照片"],
-    "position" : ["營隊地點"],
-    "recruitment_obj" : ["招生對象"],
-    "sources" : ["粉專網址"],
+    "position" : ["營隊地點","地點"],
+    "recruitment_obj" : ["招生對象","參加對象"],
+    "sources" : ["粉專網址","課程網址"],
     "subtitle" : ["營隊名稱"],
     "tag" : ["標籤"]
 }

@@ -37,7 +37,7 @@ def fil_content(content, dic):
     dic["tag"] = compare(data["tag"], content_in_line)
     return
 
-# 處理index.json
+# handle index.json
 
 
 def fil_obj(obj):
