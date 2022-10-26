@@ -42,7 +42,7 @@ def fil_content(content, dic):
 
 def fil_obj(obj):
     out_dic = {}
-    out_dic["url"] = obj["url"]
+    out_dic["sources"] = obj["url"]
     out_dic["title"] = obj["title"]
     out_dic["date"] = obj["date"]
     fil_content(obj["content"], out_dic)
@@ -50,14 +50,22 @@ def fil_obj(obj):
 
 
 # handle camping folder
-f = open('./camping/active/index.json', "r", encoding="utf-8")
-data = json.load(f)
-f.close()
+f_camping = open('./camping/active/index.json', "r", encoding="utf-8")
+data_camping = json.load(f_camping)
+f_camping.close()
+
+# handle peaceHighSchool folder
+f_peaceHighSchool = open(
+    './peaceHighSchool/projects/index.json', "r", encoding="utf-8")
+data_peaceHighSchool = json.load(f_peaceHighSchool)
+f_peaceHighSchool.close()
 
 # write output json
-with open('./camping/active/filter_after.json', 'w', encoding='utf-8') as jsonfile:
+with open('./filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfile:
     out_list = []
-    for obj in data:
+    for obj in data_camping:
+        out_list.append(fil_obj(obj))
+    for obj in data_peaceHighSchool:
         out_list.append(fil_obj(obj))
     json.dump(out_list, jsonfile, ensure_ascii=False, indent=4)
 jsonfile.close()

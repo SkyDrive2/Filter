@@ -1,6 +1,6 @@
 
 {
-    "activity_beg_time" : ["活動日期"],
+    "activity_beg_time" : ["活動日期","開課期間"],
     "activity_end_time" : ["結束日期"],
     "apply_beg_time" : ["開放報名時間"],
     "apply_end_time" : ["報名結束時間"],
