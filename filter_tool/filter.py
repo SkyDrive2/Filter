@@ -62,12 +62,20 @@ f_peaceHighSchool = open(
 data_peaceHighSchool = json.load(f_peaceHighSchool)
 f_peaceHighSchool.close()
 
+# handle developWeb folder
+f_developerWeb = open(
+    './developerWeb/projects/index.json', "r", encoding="utf-8")
+data_developerWeb = json.load(f_developerWeb)
+f_developerWeb.close()
+
 # write output json
 with open('./filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfile:
     out_list = []
     for obj in data_camping:
         out_list.append(fil_obj(obj))
     for obj in data_peaceHighSchool:
+        out_list.append(fil_obj(obj))
+    for obj in data_developerWeb:
         out_list.append(fil_obj(obj))
     json.dump(out_list, jsonfile, ensure_ascii=False, indent=4)
 jsonfile.close()
