@@ -55,7 +55,7 @@ def get_url(checker):
 
         article = {           #build a dic for one article
             "url" : url_content,
-            "name" : con_title,
+            "title" : con_title,
             "id" : id,
             "content" : body_str
         }
@@ -73,28 +73,28 @@ def get_url(checker):
         
         with open("./projects/index.json", "w",  encoding="utf-8") as writeFile: #write this to the json file
             json.dump( jsonDict , writeFile , ensure_ascii=False ,indent = 1 )
-
+get_url(checker)
 
 #   get_url(checker)
 #method to deal with JSON and cut the words to arrange the article
-def cut_article():
-    with open('./projects/index.json',"r",encoding = "utf-8") as readFile:
-        data = json.load(readFile)
+# def cut_article():
+#     with open('./projects/index.json',"r",encoding = "utf-8") as readFile:
+#         data = json.load(readFile)
 
-    for content in data :
-        atrticle = content['content']
-        after = "|".join(jieba.cut(atrticle,cut_all=False,HMM=True))
-        word_list = after.split("|")
-        try:
-            wl = np.array(word_list)
-            print((wl))
-            loc = np.where(wl == "報名˙")            
-            print(loc)
-            # for i in range(loc[0],loc[0]+10):
-            #     print(word_list[i],end = "")
-            print()
-        except ValueError as e:
-            print(content['id']+" does not exit 日期")
+#     for content in data :
+#         atrticle = content['content']
+#         after = "|".join(jieba.cut(atrticle,cut_all=False,HMM=True))
+#         word_list = after.split("|")
+#         try:
+#             wl = np.array(word_list)
+#             print((wl))
+#             loc = np.where(wl == "報名˙")            
+#             print(loc)
+#             # for i in range(loc[0],loc[0]+10):
+#             #     print(word_list[i],end = "")
+#             print()
+#         except ValueError as e:
+#             print(content['id']+" does not exit 日期")
        
 
-cut_article()
+# cut_article()
