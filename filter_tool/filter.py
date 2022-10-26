@@ -15,7 +15,7 @@ def compare(key_list, content_list):
 
 
 def fil_content(content, dic):
-    f = open('./camping/active/filter_key_words.json', "r", encoding="utf-8")
+    f = open('./filter_tool/filter_key_words.json', "r", encoding="utf-8")
     data = json.load(f)
     f.close()
     dic["content"] = content
