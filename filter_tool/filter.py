@@ -2,8 +2,6 @@ import json
 from json import load
 
 # compare content with filter
-
-
 def compare(key_list, content_list):
     for content in content_list:
         for key in key_list:
@@ -55,13 +53,13 @@ def load_json_folder(folder_road):
     f = open('./'+ folder_road + '/projects/index.json', 'r',encoding = 'utf-8')
     data = json.load(f)
     f.close()
-    list = []
-    for obj in data:
-        list.append(fil_obj(obj))
-    return list
+    return data
 
 # write output json
 with open('./filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfile:
-    out_list = load_json_folder("camping") + load_json_folder("developerWeb") + load_json_folder("peaceHighSchool")
+    load_folder_list = load_json_folder("camping") + load_json_folder("developerWeb") + load_json_folder("peaceHighSchool")
+    out_list = []
+    for obj in load_folder_list:
+        out_list.append(fil_obj(obj))
     json.dump(out_list, jsonfile, ensure_ascii=False, indent=4)
 jsonfile.close()
