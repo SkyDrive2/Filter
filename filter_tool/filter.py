@@ -10,7 +10,6 @@ def compare(key_list, content_list):
     return None
 
 # all key in output
-
 # 課程網址
 # 初賽 複賽 線上賽 線下賽
 # 活動訊息
