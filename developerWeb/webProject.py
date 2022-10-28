@@ -46,7 +46,7 @@ def get_url(checker):
         body = soup_content.find('div', class_ = "event-info-wrap")
 
         for p in body.find_all('p'):
-            p_list.append(p.text.replace(" ", "").replace("\r", "").replace("\n", " ").replace("\xa0", ""))
+            p_list.append(p.text.replace(" ", "").replace("\r", "").replace("\xa0", ""))
         body_str = ' '.join(p_list)
 
         
