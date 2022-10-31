@@ -3,12 +3,16 @@ import requests
 
 url = "https://www.chgsh.chc.edu.tw/tag/game/"
 
-headers = {"User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"}
+
 
 res = requests.get(url , headers = headers)
 soup = BeautifulSoup(res.text , "html.parser")
 
+print(soup)
 content_title = soup.find_all("h2",class_ = "blog-entry-title entry-title")
+url_list = []
 
 for title in content_title:
-    print(title.a['href'])
+    url_list.append(title.a['href'])
+
+print(len(url_list))

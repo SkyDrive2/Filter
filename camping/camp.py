@@ -17,7 +17,7 @@ title = soup.find_all("h3",class_="ftwp-heading")
 content = soup.find_all("p")
 
 
-resource_path = "./active"
+resource_path = "./projects"
 
 if not os.path.exists(resource_path):
     os.mkdir(resource_path)
@@ -39,14 +39,14 @@ for p in content:
     p_list.append(p.text)
 
 
-print(p_list)
+# print(p_list)
 
 text = {}
 
 p_list = p_list[25:3188]
 
 #method handle the url
-def url(res,list):
+def urls(res,list):
     
     title = soup.find_all("p")
     times = 0
@@ -87,7 +87,7 @@ def save_date(ary):
 
 #list to save urls
 url_list = []
-url(res,url_list)
+urls(res,url_list)
 
 #list to save date
 date = []
@@ -120,23 +120,24 @@ for titles in range(0,len(list1)):
 
 #To save the content in json
 for allthings in range(0,len(list1)):
-    id = str(uuid.uuid4())
     article={
+        "source_web_name":"【2023寒假大學營隊】精選全臺370+營隊報名資訊",
+        "source_url": url,
         "url" : url_list[allthings],
         "title" : list1[allthings],
         "content" : content[allthings],
         "date":date[allthings],
         "id":0
     }
-    if not os.path.isfile("./active/index.json"): # initailize the json file
-            with open("./active/index.json", "w") as InitialFile:
+    if not os.path.isfile("./projects/index.json"): # initailize the json file
+            with open("./projects/index.json", "w") as InitialFile:
                 InitialFile.write("[]")
-    with open("./active/index.json", "r", encoding="utf-8") as JsonFile: #transfer the article dic to json 
+    with open("./projects/index.json", "r", encoding="utf-8") as JsonFile: #transfer the article dic to json 
             jsonDict = json.load(JsonFile) 
     
     jsonDict.append(article)
 
-    with open("./active/index.json", "w",  encoding="utf-8") as writeFile: #write this to the json file
+    with open("./projects/index.json", "w",  encoding="utf-8") as writeFile: #write this to the json file
             json.dump( jsonDict , writeFile , ensure_ascii=False ,indent = 1 )
 
 

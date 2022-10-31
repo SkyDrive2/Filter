@@ -54,6 +54,8 @@ def get_url(checker):
         id = str(uuid.uuid4())#set the article id
 
         article = {           #build a dic for one article
+            "source_web_name":"青年發展署",
+            "source_url":url,
             "url" : url_content,
             "title" : con_title,
             "content" : body_str,

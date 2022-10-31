@@ -39,14 +39,14 @@ for title in url_list:
     url_res = requests.get(url = title,headers =headers)
     url_res.encoding = "utf-8"
     url_soup = BeautifulSoup(url_res.text, "html.parser")
-    
+                                                                 
     sm_url = url_soup.find_all("td", class_="C-tableA3")
 
     contents = []
 
     content = ""
-    for url in sm_url[4]:
-        contents.append(url.text)
+    for urls in sm_url[4]:
+        contents.append(urls.text)
     # print(contents)
     # print(len(contents))
     for content in contents:
@@ -67,6 +67,8 @@ all = len(url_content)
 
 for i in range(0,197):
     article = {
+        "sourse_web_name":"國立和平高中",
+        "source_url":url,
         "url" : None,
         "title" : url_title[i],
         "content" : url_content[i],
