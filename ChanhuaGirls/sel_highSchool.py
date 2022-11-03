@@ -3,6 +3,9 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import requests
 import time
+import json
+import os
+
 driver = webdriver.Chrome(executable_path = './chromedriver.exe')
 
 url = "https://www.chgsh.chc.edu.tw/tag/game/"
@@ -23,6 +26,12 @@ while True:
     temp_height = check_height
 time.sleep(2)
 
+resource_path = "./projects"
+
+if not os.path.exists(resource_path):
+    os.mkdir(resource_path)
+
+
 soup = BeautifulSoup(driver.page_source,"html.parser")
 
 
@@ -35,19 +44,44 @@ url_title = []
 for title in element:
     url_title.append(title.a['title'])
     url_list.append(title.a['href'])
-
-
+line = 0 
 
 for i in url_list:
     res = requests.get(i,headers = headers)
     small_soup = BeautifulSoup(res.text,"html.parser")
     
-    contents = small_soup.find_all("div",class_ = "entry-content clr")
-
+    contents = small_soup.find("div" ,class_="entry-content clr")
     con = []
-    for content in contents:
-        con.append(content.p.text)
+    for content in contents.find_all('p'):
+        con.append(content.text)
 
-    print(con)
 
+
+    body_str = ' '.join(con)
+
+    article = {           #build a dic for one article
+            "source_web_name":"國立彰化女中",
+            "source_url":url,
+            "url" : i,
+            "title" : url_title[line],
+            "content" : body_str,
+            "date" : None,
+            "id" : 0,
+        }
+
+    if not os.path.isfile("./projects/index.json"): # initailize the json file
+        with open("./projects/index.json", "w") as InitialFile:
+            InitialFile.write("[]")
+
+        
+    with open("./projects/index.json", "r", encoding="utf-8") as JsonFile: #transfer the article dic to json 
+        jsonDict = json.load(JsonFile) 
+
+
+    jsonDict.append(article) #add all every dic in to this list
+        
+    with open("./projects/index.json", "w",  encoding="utf-8") as writeFile: #write this to the json file
+        json.dump( jsonDict , writeFile , ensure_ascii=False ,indent = 1 )
+
+    line+=1
 
