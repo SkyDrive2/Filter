@@ -1,0 +1,264 @@
+[
+    {
+        "@context": "http://schema.org",
+        "@id": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+        "@type": "Event",
+        "name": "第二屆-保誠創新智造所-黑客松孵化計畫 - 企劃競賽 - 獎金獵人",
+        "description": "活動簡介競賽不該只在舞台上發生，透過黑客松扎實的講座、工作坊以及專業諮詢，讓團隊一步步修正提案內容，培育未來世代人才，挖掘創新解方。並且提供最終獲選的團隊孵化培力輔導以及獎助金，幫助學生團隊的提案實際落地。活動主題健康保障（Health）：",
+        "image": [
+            "https://files.bountyhunter.co/contest/public/202210/f237323b-214d-44b6-a2c0-3255020196f6_640x640.png",
+            "https://files.bountyhunter.co/contest/public/202210/f237323b-214d-44b6-a2c0-3255020196f6.png",
+            "https://bhuntr.com/images/new_logo.png"
+        ],
+        "startDate": "2022-10-31T11:00:00.000Z",
+        "endDate": "2022-11-30T10:11:30.000Z",
+        "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+        "organizer": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "name": "台灣好室有限公司",
+            "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "taipei.events@impacthub.net",
+                "telephone": "02-2700-3665",
+                "contactType": "customer service"
+            }
+        },
+        "subEvent": [
+            [
+                {
+                    "@context": "http://schema.org",
+                    "@type": "Event",
+                    "name": "投稿時間",
+                    "startDate": "2022-10-31T11:00:00.000Z",
+                    "endDate": "2022-12-19T12:00:00.000Z",
+                    "description": "投稿時間",
+                    "image": [
+                        "https://files.bountyhunter.co/contest/public/202210/f237323b-214d-44b6-a2c0-3255020196f6_640x640.png",
+                        "https://files.bountyhunter.co/contest/public/202210/f237323b-214d-44b6-a2c0-3255020196f6.png",
+                        "https://bhuntr.com/images/new_logo.png"
+                    ],
+                    "eventStatus": "https://schema.org/EventScheduled",
+                    "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+                    "organizer": {
+                        "@context": "http://schema.org",
+                        "@type": "Organization",
+                        "name": "台灣好室有限公司",
+                        "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+                        "contactPoint": {
+                            "@type": "ContactPoint",
+                            "email": "taipei.events@impacthub.net",
+                            "telephone": "02-2700-3665",
+                            "contactType": "customer service"
+                        }
+                    },
+                    "performer": {
+                        "@context": "http://schema.org",
+                        "@type": "Organization",
+                        "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+                        "logo": "https://bhuntr.com/images/new_logo.png",
+                        "name": "台灣好室有限公司",
+                        "contactPoint": {
+                            "@type": "ContactPoint",
+                            "email": "taipei.events@impacthub.net",
+                            "telephone": "02-2700-3665",
+                            "contactType": "customer service"
+                        }
+                    },
+                    "location": [
+                        {
+                            "@context": "http://schema.org",
+                            "@type": "Place",
+                            "name": "Taiwan",
+                            "address": {
+                                "@context": "http://schema.org",
+                                "@type": "PostalAddress",
+                                "addressRegion": "Taiwan"
+                            }
+                        },
+                        {
+                            "@context": "http://schema.org",
+                            "@type": "VirtualLocation",
+                            "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy"
+                        },
+                        {
+                            "@context": "http://schema.org",
+                            "@type": "VirtualLocation",
+                            "url": "https://bhuntr.com/tw/competitions/%E7%AC%AC%E4%BA%8C%E5%B1%86-%E4%BF%9D%E8%AA%A0%E5%89%B5%E6%96%B0%E6%99%BA%E9%80%A0%E6%89%80-%E9%BB%91%E5%AE%A2%E6%9D%BE%E5%AD%B5%E5%8C%96%E8%A8%88%E7%95%AB"
+                        }
+                    ],
+                    "offers": {
+                        "@context": "http://schema.org",
+                        "@type": "Offer",
+                        "priceCurrency": "TWD",
+                        "priceValidUntil": "2022-11-07T22:57:30.000Z",
+                        "price": 500000,
+                        "name": "總獎金",
+                        "availability": "https://schema.org/InStock",
+                        "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+                        "validFrom": "2022-12-19T20:00:00.000Z"
+                    }
+                }
+            ],
+            {
+                "@context": "http://schema.org",
+                "@type": "Event",
+                "name": "得獎公佈時間",
+                "startDate": "2022-12-19T12:00:00.000Z",
+                "endDate": "2022-11-30T10:11:30.000Z",
+                "description": "得獎公佈時間",
+                "image": [
+                    "https://files.bountyhunter.co/contest/public/202210/f237323b-214d-44b6-a2c0-3255020196f6_640x640.png",
+                    "https://files.bountyhunter.co/contest/public/202210/f237323b-214d-44b6-a2c0-3255020196f6.png",
+                    "https://bhuntr.com/images/new_logo.png"
+                ],
+                "eventStatus": "https://schema.org/EventScheduled",
+                "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+                "organizer": {
+                    "@context": "http://schema.org",
+                    "@type": "Organization",
+                    "name": "台灣好室有限公司",
+                    "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "email": "taipei.events@impacthub.net",
+                        "telephone": "02-2700-3665",
+                        "contactType": "customer service"
+                    }
+                },
+                "performer": {
+                    "@context": "http://schema.org",
+                    "@type": "Organization",
+                    "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+                    "logo": "https://bhuntr.com/images/new_logo.png",
+                    "name": "台灣好室有限公司",
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "email": "taipei.events@impacthub.net",
+                        "telephone": "02-2700-3665",
+                        "contactType": "customer service"
+                    }
+                },
+                "location": [
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Place",
+                        "name": "Taiwan",
+                        "address": {
+                            "@context": "http://schema.org",
+                            "@type": "PostalAddress",
+                            "addressRegion": "Taiwan"
+                        }
+                    },
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "VirtualLocation",
+                        "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy"
+                    },
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "VirtualLocation",
+                        "url": "https://bhuntr.com/tw/competitions/%E7%AC%AC%E4%BA%8C%E5%B1%86-%E4%BF%9D%E8%AA%A0%E5%89%B5%E6%96%B0%E6%99%BA%E9%80%A0%E6%89%80-%E9%BB%91%E5%AE%A2%E6%9D%BE%E5%AD%B5%E5%8C%96%E8%A8%88%E7%95%AB"
+                    }
+                ],
+                "offers": {
+                    "@context": "http://schema.org",
+                    "@type": "Offer",
+                    "priceCurrency": "TWD",
+                    "priceValidUntil": "2022-11-07T22:57:30.000Z",
+                    "price": 500000,
+                    "name": "總獎金",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+                    "validFrom": "2022-12-19T20:00:00.000Z"
+                }
+            }
+        ],
+        "performer": {
+            "@context": "http://schema.org",
+            "@type": "Organization",
+            "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+            "logo": "https://bhuntr.com/images/new_logo.png",
+            "name": "台灣好室有限公司",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "taipei.events@impacthub.net",
+                "telephone": "02-2700-3665",
+                "contactType": "customer service"
+            }
+        },
+        "location": [
+            {
+                "@context": "http://schema.org",
+                "@type": "Place",
+                "name": "Taiwan",
+                "address": {
+                    "@context": "http://schema.org",
+                    "@type": "PostalAddress",
+                    "addressRegion": "Taiwan"
+                }
+            },
+            {
+                "@context": "http://schema.org",
+                "@type": "VirtualLocation",
+                "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy"
+            },
+            {
+                "@context": "http://schema.org",
+                "@type": "VirtualLocation",
+                "url": "https://bhuntr.com/tw/competitions/%E7%AC%AC%E4%BA%8C%E5%B1%86-%E4%BF%9D%E8%AA%A0%E5%89%B5%E6%96%B0%E6%99%BA%E9%80%A0%E6%89%80-%E9%BB%91%E5%AE%A2%E6%9D%BE%E5%AD%B5%E5%8C%96%E8%A8%88%E7%95%AB"
+            }
+        ],
+        "offers": {
+            "@context": "http://schema.org",
+            "@type": "Offer",
+            "priceCurrency": "TWD",
+            "priceValidUntil": "2022-11-07T22:57:30.000Z",
+            "price": 500000,
+            "name": "總獎金",
+            "availability": "https://schema.org/InStock",
+            "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+            "validFrom": "2022-12-19T20:00:00.000Z",
+            "0": {
+                "@context": "http://schema.org",
+                "@type": "Offer",
+                "priceCurrency": "NT$",
+                "priceValidUntil": "2022-11-30T10:11:30.000Z",
+                "price": 0,
+                "name": "總獎金",
+                "alternateName": "獎金",
+                "availability": "https://schema.org/InStock",
+                "url": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy",
+                "validFrom": "2022-12-19T12:00:00.000Z"
+            }
+        }
+    },
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "name": "第二屆-保誠創新智造所-黑客松孵化計畫 - 企劃競賽 - 獎金獵人",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "獎金獵人",
+                "item": "https://bhuntr.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "找比賽",
+                "item": "https://bhuntr.com/tw/competitions/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "第二屆-保誠創新智造所-黑客松孵化計畫 - 企劃競賽 - 獎金獵人",
+                "item": "https://bhuntr.com/tw/competitions/4df9ld2jlkm9yiwkqy"
+            }
+        ]
+    }
+]

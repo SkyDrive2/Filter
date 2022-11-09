@@ -28,7 +28,7 @@ time.sleep(2)
 
 resource_path = "./projects"
 
-if not os.path.exists(resource_path):
+if not os.path.exists(resource_path): 
     os.mkdir(resource_path)
 
 
