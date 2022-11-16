@@ -73,6 +73,10 @@ def regular_expression(branch_type, content, only_one):
                 # input("Stop\n===========================")
                 if branch[output_key] == None:
                     branch[output_key] = findall_list
+                elif findall_list != None:
+                    for compare_twice in findall_list:
+                        if not(compare_twice in branch[output_key]):
+                            branch[output_key].append(compare_twice)
         return branch
     else:
         # print('\033[93m' + "[Jeneral]"+'\033[0m')
@@ -82,7 +86,7 @@ def regular_expression(branch_type, content, only_one):
                 findall_list = re.findall(key, content)
                 if len(findall_list) == 0:
                     findall_list = None
-                
+
                     # print('\033[96m' + "[KEY]" + key + '\033[0m')
                     # print('\033[91m' + output_key +
                     #       " : " + "Not Found" + '\033[0m')
@@ -93,6 +97,10 @@ def regular_expression(branch_type, content, only_one):
                 # print("========\n")
                 if branch[output_key] == None:
                     branch[output_key] = findall_list
+                elif findall_list != None:
+                    for compare_twice in findall_list:
+                        if not(compare_twice in branch[output_key]):
+                            branch[output_key].append(compare_twice)
         return branch
 
 
@@ -176,6 +184,7 @@ def fil_obj(obj):
     # out_dic["sources"] = [obj["url"]]
     # out_dic["date"] = obj["date"]
     fil_content(obj["content"], out_dic)
+    # print(out_dic)
     return out_dic
 
 
@@ -184,23 +193,30 @@ with open('./filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfile:
     load_folder_list = load_json_folder(
         "peaceHighSchool") + load_json_folder("camping") + load_json_folder("developerWeb")
     out_list = []
+    print(type(load_folder_list))
+    # print(len(load_folder_list))
     for obj in load_folder_list:
         out_list.append(fil_obj(obj))
+        # print(fil_obj(obj))
+        # print(out_list)
+        # print("(===========)")
+        # input("stop")
     # test id
     m = 0
+    test_date_start = []
     for all in out_list:
         all["id"] = m
         m = m + 1
-        
-        # if "jeneral" in all.keys():
-        #     if(all["jeneral"]["date_start"] == None):
-        #         print(bcolors.OKBLUE + all["content"] + bcolors.ENDC)
-        #         print(bcolors.WARNING + "[date_start]" +bcolors.ENDC)
-        #         print(bcolors.OKGREEN + str(all["id"]) + bcolors.ENDC)
-        #         print(bcolors.BOLD + str(all) + bcolors.ENDC)
-        #         print("=================================")
-        #         input("Stop\n\n\n")
-    # print(all)
+        if "jeneral" in all.keys():
+            if(all["jeneral"]["date_start"] == None):
+                test_date_start.append(all["id"])
+                # print(bcolors.OKBLUE + all["content"] + bcolors.ENDC)
+                # # print(bcolors.WARNING + "[date_start]" +bcolors.ENDC)
+                # print(bcolors.OKGREEN + str(all["id"]) + bcolors.ENDC)
+                # # print(bcolors.BOLD + str(all["jeneral"]) + bcolors.ENDC)
+                # print("=================================")
+                # input("Stop\n\n\n")
+    print(test_date_start)
     json.dump(out_list, jsonfile, ensure_ascii=False, indent=4)
 jsonfile.close()
 
@@ -208,6 +224,10 @@ jsonfile.close()
 
 
 def update_only_one():
+    # sout = {"date_start":"","date_end":"","apply_start":"","apply_end":"","apply_fee":"","location":""}
+    # sb = open("./filter_tool/projects/index.json", "w", encoding="utf-8")
+    # json.dump(sout, sb, ensure_ascii=False, indent=4)
+    # sb.close()
     a = open("./filter_tool/projects/index.json", 'r', encoding='utf-8')
     c = json.load(a)
     a.close()
@@ -218,15 +238,20 @@ def update_only_one():
     # print(c["初賽"].keys())
     # print(k)
     for all in c["初賽"].keys():
+        
         li = []
         for te in k:
-            for con in c[te][all]:
-                li.append(con)
+            if te != "only_one":
+                for con in c[te][all]:
+                    li.append(con)
             # print(c[te][all])
         # print(type(li))
         # sdf = copy.deepcopy(li)
         # print(sdf)
+        
         only_dic[all] = list(set(copy.deepcopy(li)))
+        # print( only_dic[all])
+        # input("stop")
         li.clear()
     # print(only_dic)
     out = {}
@@ -245,3 +270,5 @@ update_only_one()
 # branch
 # 報名表單
 # 命名
+#第一時段  第二時段...
+# tag
