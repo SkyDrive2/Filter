@@ -16,6 +16,8 @@ soup = BeautifulSoup(res.text,"html.parser")
 title = soup.find_all("h3",class_="ftwp-heading")
 content = soup.find_all("p")
 
+image = soup.find_all("figure", class_ = "wp-block-image size-full")
+
 
 resource_path = "./projects"
 
@@ -39,11 +41,13 @@ for p in content:
     p_list.append(p.text)
 
 
-# print(p_list)
+
+
+print(len(p_list))
 
 text = {}
 
-p_list = p_list[25:3188]
+p_list = p_list[25:3244]
 
 #method handle the url
 def urls(res,list):
@@ -61,11 +65,15 @@ def urls(res,list):
                 url_list.append(i.a['href'])
             elif str(i.text) == "➤詳細資訊：點擊前往":
                 url_list.append(i.a['href'])
+            elif str(i.text) == "➤官方網站：點擊前往":
+                url_list.append(i.a['href'])    
             elif str(i.text) == "➤粉專網址：https://www.facebook.com/events/5357289340952836/?ref=newsfeed":
                 string = i.text
                 chan = string.split("：")
                 url_list.append(chan[1])
             elif str(i.text) == "➤更多營隊資訊＆報名連結：點擊前往":
+                url_list.append(i.a['href'])
+            elif str(i.text) == "➤營隊詳細資訊與報名連結：點擊前往":
                 url_list.append(i.a['href'])
             
             elif str(i.strong.a.text) == "點擊前往":
@@ -88,10 +96,12 @@ def save_date(ary):
 #list to save urls
 url_list = []
 urls(res,url_list)
+print(len(url_list))
 
 #list to save date
 date = []
 save_date(date)
+print(len(date))
 
 #method to handle the content
 content = []
@@ -99,7 +109,7 @@ cont = ""
 j=0
 for titles in range(0,len(list1)):
     
-    for i in range(j,3163):
+    for i in range(j,3219):
         try:
             if p_list[i+1]=="➤主辦單位：啟夢教育":
                 cont+=p_list[i]
@@ -117,8 +127,8 @@ for titles in range(0,len(list1)):
     content.append(cont)
 
     cont = ""
-
-#To save the content in json
+print(len(list1))
+# To save the content in json
 for allthings in range(0,len(list1)):
     article={
         "source_web_name":"【2023寒假大學營隊】精選全臺370+營隊報名資訊",
@@ -139,6 +149,8 @@ for allthings in range(0,len(list1)):
 
     with open("./projects/index.json", "w",  encoding="utf-8") as writeFile: #write this to the json file
             json.dump( jsonDict , writeFile , ensure_ascii=False ,indent = 1 )
+
+
 
 
 

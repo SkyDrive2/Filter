@@ -16,15 +16,33 @@ soup = BeautifulSoup(res.text,"html.parser")
 
 title = soup.select('div[class = "regist-btn"]') #the all article's url
 
+
+img_list = []
+img = soup.find_all("figure" , class_ = "img")
+for i in img:
+    img_list.append("https://www.yda.gov.tw"+i.img['src'])
+
+
 checker = [] 
 def check_url(title):
     for art in title:
         con = str(art.a['href'])
         checker.append(con)
-    
 
+dates = soup.select('small[class = "date"]') 
+
+date_list = []
+def date_time(dates):
+    for date in dates:
+        string = date.text.replace(" ", "").replace("\r", "").replace("\n", " ")
+        if string[0:3] ==" 活動":
+            date_list.append(string)
+
+date_time(dates)
 check_url(title)
-checker = set(checker)
+
+
+
 
 resource_path = "./projects"
 
@@ -36,7 +54,7 @@ jsonDict = []
 
 #method for getting the JSON file
 def get_url(checker):
-
+    i = 0
     for con in checker:
         url_content = "https://www.yda.gov.tw/"+con
         res_content = requests.get(url = url_content,headers = headers)
@@ -49,19 +67,17 @@ def get_url(checker):
             p_list.append(p.text.replace(" ", "").replace("\r", "").replace("\xa0", ""))
         body_str = ' '.join(p_list)
 
-        
-
-        id = str(uuid.uuid4())#set the article id
-
         article = {           #build a dic for one article
             "source_web_name":"青年發展署",
             "source_url":url,
             "url" : url_content,
             "title" : con_title,
             "content" : body_str,
-            "date" : None,
+            "date" : date_list[i],
+            "img":img_list[i],
             "id" : 0,
         }
+        i+=1
 
         if not os.path.isfile("./projects/index.json"): # initailize the json file
             with open("./projects/index.json", "w") as InitialFile:
