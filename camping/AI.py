@@ -3,6 +3,8 @@ import requests
 import os
 import json
 import re
+import uuid
+
 
 url = "https://students.tw/5599/"
 
@@ -11,15 +13,15 @@ headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 res = requests.get(url , headers = headers)
 soup = BeautifulSoup(res.text,"html.parser")
 
-  
-title = soup.find_all("p")
+title = soup.find_all("h3",class_="ftwp-heading")
+content = soup.find_all("p")
 
+image_list = []
+listA = []
 
-date=[]
-def date(ary):
-    for i in title:
-        if str(i.text)[:5] =="➤活動日期":
-            date.append(str(i.text)[6:])
-    date[17]="2"+date[17]
- 
-print(date[17])
+it = soup.find_all("figure",class_ = 'wp-block-image size-full')
+for i in it:
+    for o in i :
+        listA.append(o.source['srcset'])
+
+print(len(listA))

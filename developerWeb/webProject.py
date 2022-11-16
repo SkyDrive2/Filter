@@ -16,6 +16,13 @@ soup = BeautifulSoup(res.text,"html.parser")
 
 title = soup.select('div[class = "regist-btn"]') #the all article's url
 
+
+img_list = []
+img = soup.find_all("figure" , class_ = "img")
+for i in img:
+    img_list.append("https://www.yda.gov.tw"+i.img['src'])
+
+
 checker = [] 
 def check_url(title):
     for art in title:
@@ -67,6 +74,7 @@ def get_url(checker):
             "title" : con_title,
             "content" : body_str,
             "date" : date_list[i],
+            "img":img_list[i],
             "id" : 0,
         }
         i+=1
