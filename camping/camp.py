@@ -42,8 +42,17 @@ for p in content:
 
 
 
+image = []
+for tit in title:
+    try:
+        images = tit.find_next_sibling("figure")
+        image.append(images.source['srcset'])
+    except TypeError as e:
+        image.append("")
+    
 
-print(len(p_list))
+
+
 
 text = {}
 
@@ -96,12 +105,12 @@ def save_date(ary):
 #list to save urls
 url_list = []
 urls(res,url_list)
-print(len(url_list))
+
 
 #list to save date
 date = []
 save_date(date)
-print(len(date))
+
 
 #method to handle the content
 content = []
@@ -127,7 +136,7 @@ for titles in range(0,len(list1)):
     content.append(cont)
 
     cont = ""
-print(len(list1))
+
 # To save the content in json
 for allthings in range(0,len(list1)):
     article={
@@ -137,6 +146,7 @@ for allthings in range(0,len(list1)):
         "title" : list1[allthings],
         "content" : content[allthings],
         "date":date[allthings],
+        "image":image[allthings],
         "id":0
     }
     if not os.path.isfile("./projects/index.json"): # initailize the json file
