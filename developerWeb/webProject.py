@@ -74,7 +74,7 @@ def get_url(checker):
             "title" : con_title,
             "content" : body_str,
             "date" : date_list[i],
-            "img":img_list[i],
+            "image":img_list[i],
             "id" : 0,
         }
         i+=1
