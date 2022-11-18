@@ -1,7 +1,7 @@
 import json
 import re
 import copy
-
+import datetime
 # load folder which is under projects
 
 
@@ -13,7 +13,7 @@ def load_json_folder(folder_road):
 
 
 def update_only_one():
-    a = open("./re_filter_tool/projects/index.json", 'r', encoding='utf-8')
+    a = open("./re_filter_tool/projects/branch_key.json", 'r', encoding='utf-8')
     c = json.load(a)
     a.close()
     k = c.keys()
@@ -30,7 +30,7 @@ def update_only_one():
     for name in k:
         out[name] = c[name]
     out["OnlyOne"] = only_dic
-    b = open("./re_filter_tool/projects/index.json", "w", encoding="utf-8")
+    b = open("./re_filter_tool/projects/branch_key.json", "w", encoding="utf-8")
     json.dump(out, b, ensure_ascii=False, indent=4)
     b.close()
 
@@ -71,40 +71,61 @@ def tags_filter(content):
     else:
         return tag_list
 
+def to_date_type(name,list):
+    output_list = []
+    if list == None: return list
+    for line in list:
+        if (name == "ApplyStart") | (name == "DateStart"):
+            if "即日" in line:
+                output_list.append("自即日起")
+            else:
+                
+                split_list = re.split("[^0-9]", line)
+                remove_split_list = [i for i in split_list if i != ""]
+                
+                if len(remove_split_list) == 3:
+                    if int(remove_split_list[0]) < 1911:
+                        remove_split_list[0] = str(int(remove_split_list[0])+1911)
+                        
+                    date = str(datetime.date(int(remove_split_list[0]),int(remove_split_list[1]),int(remove_split_list[2])))
+                    output_list.append(date)
+                elif len(remove_split_list) == 2:
+                    if remove_split_list[1] == 124:
+                        output_list.append(line)
+                        return output_list
+                    remove_split_list.insert(0,"1999")
+                    print(remove_split_list)
+                    print("============")
+                    date = str(datetime.date(int(remove_split_list[0]),int(remove_split_list[1]),int(remove_split_list[2])))
+                    output_list.append(date)
+                else:    
+                    output_list.append(line)
+        elif (name == "ApplyEnd") | (name == "DateEnd"):
+            return list
+    return output_list
 
 def regular_expression(branch_name, content, only_one):
     data = load_json_folder('./re_filter_tool/projects/branch_key.json')
     branch = {}
+    to_datetype_name = ["DateStart", "DateEnd", "ApplyStart", "ApplyEnd"]
     key_list = data[branch_name].keys()
     branch["BranchName"] = branch_name
-    if only_one:
-        for output_key in key_list:
-            branch[output_key] = None
-            for key in data["OnlyOne"][output_key]:
-                findall_list = re.findall(key, content)
-                if len(findall_list) == 0:
-                    findall_list = None
-                if branch[output_key] == None:
-                    branch[output_key] = findall_list
-                elif findall_list != None:
-                    for compare_twice in findall_list:
-                        if not (compare_twice in branch[output_key]):
-                            branch[output_key].append(compare_twice)
-        return branch
-    else:
-        for output_key in key_list:
-            branch[output_key] = None
-            for key in data[branch_name][output_key]:
-                findall_list = re.findall(key, content)
-                if len(findall_list) == 0:
-                    findall_list = None
-                if branch[output_key] == None:
-                    branch[output_key] = findall_list
-                elif findall_list != None:
-                    for compare_twice in findall_list:
-                        if not (compare_twice in branch[output_key]):
-                            branch[output_key].append(compare_twice)
-        return branch
+    if only_one: branch_name = "OnlyOne"
+    for output_key in key_list:
+        branch[output_key] = None
+        for key in data[branch_name][output_key]:
+            findall_list = re.findall(key, content)
+            if len(findall_list) == 0:
+                findall_list = None
+            if branch[output_key] == None:
+                branch[output_key] = findall_list
+            elif findall_list != None:
+                for compare_twice in findall_list:
+                    if not (compare_twice in branch[output_key]):
+                        branch[output_key].append(compare_twice)
+        # if output_key in to_datetype_name:
+        #     branch[output_key] = to_date_type(output_key,branch[output_key])
+    return branch
 
 
 def fil_except_branch(content, ori_sources):
@@ -157,8 +178,8 @@ def obj_filter(obj_dic):
     output_dic["Title"] = obj_dic["title"]
     output_dic["Sources"] = obj_dic["url"]
     output_dic["Content"] = obj_dic["content"].replace(" ", "")
-    if "img" in obj_dic.keys():
-        output_dic["Image"] = obj_dic["img"]
+    if "imag" in obj_dic.keys():
+        output_dic["Image"] = obj_dic["image"]
     # output_dic["Date"] = obj_dic["date"]
     output_dic.update(fil_except_branch(
         output_dic["Content"], output_dic["Sources"]))
@@ -184,14 +205,16 @@ with open('./re_filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfi
     json.dump(output_list, jsonfile, ensure_ascii=False, indent=4)
 jsonfile.close()
 
-update_only_one
+update_only_one()
+
 # testre = re.split("[^0-9]", "哈摟哀呢區111年10月5日")
-# ttest = [for i in testre : if i != ]
-# print(ttest)
+# ttest = [i for i in testre if i != ""]
+# print(datetime.date(int(ttest[0]),int(ttest[1]),int(ttest[2])))
+
+
 
 
 # filter date from original floder["date"]
-
 
 
 # filter "Tags" in except_branch_dic
