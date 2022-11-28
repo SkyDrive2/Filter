@@ -9,10 +9,10 @@ url = "https://bhuntr.com/tw/competitions/3airrdw8ame9ict69y"
 res = requests.get(url,headers = headers)
 res.encoding='utf-8'
 
-soup = BeautifulSoup(res.text, 'html.parser')
+soup = BeautifulSoup(res.text)
 # string = "application/ld+json"
 # contents = soup.find_all("script",type = string) 
-print(soup.find('script'))
+print(soup.find("div"))
 
 
 

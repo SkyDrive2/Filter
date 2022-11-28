@@ -435,8 +435,8 @@ def obj_filter(obj_dic):
 
 # write output json
 with open('./re_filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfile:
-    # folder_list = ["peaceHighSchool", "camping", "developerWeb"]
-    folder_list = ["re_filter_tool"]
+    folder_list = ["peaceHighSchool", "camping", "developerWeb"]
+    # folder_list = ["re_filter_tool"]
     load_folder_list = []
     for folder_name in folder_list:
         folder_name = './' + folder_name + '/projects/index.json'
