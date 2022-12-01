@@ -54,7 +54,7 @@ def compare(key_list, content_list, type):
 
 def tags_filter(content):
     data = load_json_folder('./re_filter_tool/projects/tags_key.json')
-    tags_type_list = ["Area", "Location", "Other"]
+    tags_type_list = ["area", "location", "other"]
     tag_list = []
     tag_id = 0
     for type in tags_type_list:
@@ -424,7 +424,11 @@ def obj_filter(obj_dic):
     # output_dic["Content"] = obj_dic["content"]
     output_dic["Content"] = obj_dic["content"].replace(" ", "")
     if "image" in obj_dic.keys():
-        output_dic["Image"] = obj_dic["image"]
+        if type(obj_dic["image"]) == type("String"):
+            output_dic["Image"] = [obj_dic["image"]]
+        else:
+            output_dic["Image"] = obj_dic["image"]
+        # output_dic["Image"] = [x.split(" ")[0] for x in obj_dic["image"]]
     else:
         output_dic["Image"] = None
     # output_dic["Date"] = obj_dic["date"]
@@ -435,8 +439,8 @@ def obj_filter(obj_dic):
 
 # write output json
 with open('./re_filter_tool/filter_after.json', 'w', encoding='utf-8') as jsonfile:
-    # folder_list = ["peaceHighSchool", "camping", "developerWeb"]
-    folder_list = ["re_filter_tool"]
+    folder_list = ["peaceHighSchool", "camping", "developerWeb"]
+    # folder_list = ["re_filter_tool"]
     load_folder_list = []
     for folder_name in folder_list:
         folder_name = './' + folder_name + '/projects/index.json'
