@@ -1,22 +1,46 @@
-from bs4 import BeautifulSoup
-import requests
 import json
+import re
+import copy
+import datetime
+import os
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 
-headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}
+load = open("./projects/filter.json", 'r' , encoding="utf-8" )
+js = json.load(load)
+load.close()
+length = len(js)
+all_url = []
 
-url = "https://bhuntr.com/tw/competitions/3airrdw8ame9ict69y"
+for i in js:
+    all_url.append(i['source'][0])
 
-res = requests.get(url,headers = headers)
-res.encoding='utf-8'
-
-soup = BeautifulSoup(res.text, 'html.parser')
-# string = "application/ld+json"
-# contents = soup.find_all("script",type = string) 
-print(soup.find('script'))
+chrome_options = Options()
+#chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(executable_path = './chromedriver.exe',options=chrome_options)
 
 
+for url in all_url:
+    driver.get(url)
+    contents = driver.find_elements(By.TAG_NAME,"p")
+    string = ""
+    for content in contents:
+        string+=content.text
 
-# i = contents[0]
-# test = json.loads(i.text)
-# open("tst.json", "w", encoding="utf-8").write(json.dumps(test, indent=4,ensure_ascii=False))  
+    article ={
+        "Contents" : content
+    }
+    if not os.path.isfile("./projects/content.json"): # initailize the json file
+        with open("./projects/content.json", "w") as InitialFile:
+            InitialFile.write("[]")
 
+        
+    with open("./projects/content.json", "r", encoding="utf-8") as JsonFile: #transfer the article dic to json 
+        jsonDict = json.load(JsonFile) 
+
+
+    jsonDict.append(article) #add all every dic in to this list
+        
+    with open("./projects/content.json", "w",  encoding="utf-8") as writeFile: #write this to the json file
+        json.dump( jsonDict , writeFile , ensure_ascii=False ,indent = 1 )

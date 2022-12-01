@@ -1124,27 +1124,27 @@
     [
      {
       "@context": "http://schema.org",
-      "@type": "Event",
-      "name": "投稿時間",
-      "startDate": "2022-09-01T15:00:00.000Z",
-      "endDate": "2023-01-31T17:00:00.000Z",
-      "description": "投稿時間",
-      "image": [
-       "https://files.bountyhunter.co/contest/public/202208/668a89d9-0a75-5573-97e4-845033d1519f_640x640.png",
-       "https://files.bountyhunter.co/contest/public/202208/668a89d9-0a75-5573-97e4-845033d1519f.png",
-       "https://bhuntr.com/images/new_logo.png"
-      ],
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-      "organizer": {
-       "@context": "http://schema.org",
-       "@type": "Organization",
-       "name": "大和娛樂有限公司",
-       "url": "https://bhuntr.com/tw/competitions/3airrdw8ame9ict69y",
-       "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "s3028676@gmail.com",
-        "telephone": "03-3028676#106",
+        "@type": "Event",
+        "name": "投稿時間",
+        "startDate": "2022-09-01T15:00:00.000Z",
+        "endDate": "2023-01-31T17:00:00.000Z",
+        "description": "投稿時間",
+        "image": [
+        "https://files.bountyhunter.co/contest/public/202208/668a89d9-0a75-5573-97e4-845033d1519f_640x640.png",
+        "https://files.bountyhunter.co/contest/public/202208/668a89d9-0a75-5573-97e4-845033d1519f.png",
+        "https://bhuntr.com/images/new_logo.png"
+        ],
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+        "organizer": {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "大和娛樂有限公司",
+        "url": "https://bhuntr.com/tw/competitions/3airrdw8ame9ict69y",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "s3028676@gmail.com",
+            "telephone": "03-3028676#106",
         "contactType": "customer service"
        }
       },
@@ -56804,7 +56804,7 @@
    "@id": "https://bhuntr.com/tw/competitions/83dnt9lb5n7njmu5xd",
    "@type": "Event",
    "name": "2023第22屆壓克力設計創意競賽 - 綜合設計 - 獎金獵人",
-   "description": "活動宗旨本設計競賽為提供學術界與產業界一個設計交流平台，讓參賽學生利用壓克力材質的特性，進而激發其創意思維，熟悉壓克力材料之開發、設計與應用，藉以培養壓克力專業設計人才，並提升壓克力創意的設計能力與水準。&nbsp;競賽對象對壓克力設計有興",
+   "description": "活動宗旨本設計競賽為提供學術界與產業界一個設計交流平台，讓參賽學生利用壓克力材質的特性，進而激發其創意思維，熟悉壓克力材料之開發、設計與應用，藉以培養壓克力專業設計人才，並提升壓克力創意的設計能力與水準。&nbsp;競賽對壓克力設計有興",
    "image": [
     "https://files.bountyhunter.co/contest/public/202209/2a9d302a-cbfc-4a84-944d-575c62036be5_640x640.jpg",
     "https://files.bountyhunter.co/contest/public/202209/2a9d302a-cbfc-4a84-944d-575c62036be5.jpg",
