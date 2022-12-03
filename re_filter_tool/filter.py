@@ -96,15 +96,16 @@ def to_date_type(name, li, content):
     if li == None:
         return li
     list2 = []
-    check = True
+    
     for i in range(0,len(li)):
+        check = True
         for j in range(0,len(li)):
             if i != j :
                 if (li[i] in li[j]):
                     check = False
         if check:
             list2.append(li[i])
-        check = True   
+         
     li = list2
     if name == "DateStart":
         datestart_dic = {}
@@ -134,6 +135,8 @@ def to_date_type(name, li, content):
                         year = re.findall("[0-9]{3}", year3[0])
                         date = str(datetime.date(int(year[0])+1911, int(remove_split_list[0]), int(
                             remove_split_list[1])))
+                    else:
+                        date = line
                 elif len(remove_split_list) == 3:
                     if int(remove_split_list[0]) < 1911:
                         remove_split_list[0] = str(
@@ -151,8 +154,8 @@ def to_date_type(name, li, content):
                     if name in line:
                         find_key_name = [name]
             if len(find_key_name) != 0:
-                datestart_dic[space + find_key_name[0]] = date
-                space += "G"
+                datestart_dic[find_key_name[0]+ space] = date
+                space += "."
             else:
                 datestart_dic[GeneralDateStart] = date
                 GeneralDateStart += "."
@@ -184,7 +187,8 @@ def to_date_type(name, li, content):
                         year = re.findall("[0-9]{3}", year3[0])
                         date = str(datetime.date(int(year)+1911, int(remove_split_list[0]), int(
                             remove_split_list[1])))
-
+                    else:
+                        date = line
                 elif len(remove_split_list) == 3:
                     if int(remove_split_list[0]) < 1911:
                         remove_split_list[0] = str(
@@ -250,6 +254,8 @@ def to_date_type(name, li, content):
                                     i for i in split_list if i != ""]
                                 date = str(datetime.date(int(
                                     remove_split_list[0])+1911, int(remove_split_list[1]), int(remove_split_list[2])))
+                            else:
+                                date = line
                             returnlist.append(date)
                             break
                         elif len(remove_split_list) == 2:
@@ -278,7 +284,8 @@ def to_date_type(name, li, content):
                                 year = re.findall("[0-9]{3}", allyear3[0])
                                 date = str(datetime.date(int(year[0])+1911, int(remove_split_list[0]), int(
                                     remove_split_list[1])))
-
+                            else:
+                                date = line
                         elif len(remove_split_list) == 3:
                             if int(remove_split_list[0]) < 1911:
                                 remove_split_list[0] = str(
@@ -338,6 +345,7 @@ def regular_expression(branch_name, content, only_one):
                         if not (compare_twice in branch[output_key]):
                             branch[output_key].append(compare_twice)
         if output_key in to_datetype_name:
+            
             branch[output_key] = to_date_type(
                 output_key, branch[output_key], content)
     return branch
@@ -424,9 +432,9 @@ def obj_filter(obj_dic):
     # output_dic["Content"] = obj_dic["content"]
     output_dic["Content"] = obj_dic["content"].replace(" ", "")
     if "image" in obj_dic.keys():
-        if type(obj_dic["image"]) == type("String"):
-            output_dic["Image"] = [obj_dic["image"]]
-        else:
+        # if type(obj_dic["image"]) == type("String"):
+        #     output_dic["Image"] = [obj_dic["image"]]
+        # else:
             output_dic["Image"] = obj_dic["image"]
         # output_dic["Image"] = [x.split(" ")[0] for x in obj_dic["image"]]
     else:
