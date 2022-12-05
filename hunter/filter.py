@@ -4,7 +4,7 @@ import copy
 import datetime
 import os
 
-load = open("./hunter/projects/index.json", 'r' , encoding="utf-8" )
+load = open("./projects/index.json", 'r' , encoding="utf-8" )
 js = json.load(load)
 load.close()
 length = len(js)
