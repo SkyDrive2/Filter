@@ -65,7 +65,7 @@ def tags_filter(content):
                 tag_dic["Id"] = tag_id
                 # tag_id += 1
                 tag_dic["Text"] = tag
-                tag_dic["TagCount"] = 0
+                tag_dic["TagCount"] = 1
                 tag_list.append(dict(tag_dic))
                 tag_dic.clear()
     if len(tag_list) == 0:
@@ -96,16 +96,16 @@ def to_date_type(name, li, content):
     if li == None:
         return li
     list2 = []
-    
-    for i in range(0,len(li)):
+
+    for i in range(0, len(li)):
         check = True
-        for j in range(0,len(li)):
-            if i != j :
+        for j in range(0, len(li)):
+            if i != j:
                 if (li[i] in li[j]):
                     check = False
         if check:
             list2.append(li[i])
-         
+
     li = list2
     if name == "DateStart":
         datestart_dic = {}
@@ -154,7 +154,7 @@ def to_date_type(name, li, content):
                     if name in line:
                         find_key_name = [name]
             if len(find_key_name) != 0:
-                datestart_dic[find_key_name[0]+ space] = date
+                datestart_dic[find_key_name[0] + space] = date
                 space += "."
             else:
                 datestart_dic[GeneralDateStart] = date
@@ -345,7 +345,7 @@ def regular_expression(branch_name, content, only_one):
                         if not (compare_twice in branch[output_key]):
                             branch[output_key].append(compare_twice)
         if output_key in to_datetype_name:
-            
+
             branch[output_key] = to_date_type(
                 output_key, branch[output_key], content)
     return branch
@@ -435,7 +435,7 @@ def obj_filter(obj_dic):
         # if type(obj_dic["image"]) == type("String"):
         #     output_dic["Image"] = [obj_dic["image"]]
         # else:
-            output_dic["Image"] = obj_dic["image"]
+        output_dic["Image"] = obj_dic["image"]
         # output_dic["Image"] = [x.split(" ")[0] for x in obj_dic["image"]]
     else:
         output_dic["Image"] = None
