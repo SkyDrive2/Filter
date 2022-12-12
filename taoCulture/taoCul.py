@@ -56,7 +56,7 @@ for href in hrefs:
         "url" : href,
         "title" : title[hrefs.index(href)],
         "content" : content_str,
-        "date" : dates[hrefs.index(href)],
+        "date" : dates[hrefs.index(href)].replace("-","/"),
         "image":img_list,
         "id" : 0,
     }
