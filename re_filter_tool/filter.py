@@ -11,7 +11,14 @@ def load_json_folder(folder_road):
     f.close()
     return data
 
-
+def FindAllUrl(UrlList):
+    OutputList = []
+    url_extract_pattern = "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#?&\\/=]*)"
+    for i in UrlList:
+        OutputList += re.findall(url_extract_pattern,i)
+    return OutputList
+        
+    
 def update_only_one():
     a = open("./re_filter_tool/projects/branch_key.json", 'r', encoding='utf-8')
     c = json.load(a)
@@ -408,6 +415,7 @@ def fil_ex_branch(content, ori_sources):
         ex_branch_dic["Sources"] = ori_sources
     if len(ex_branch_dic["Sources"]) == 0:
         ex_branch_dic["Sources"] = None
+    ex_branch_dic["Sources"] = FindAllUrl(ex_branch_dic["Sources"])
     ex_branch_dic["Tags"] = tags_filter(content)
 
     return ex_branch_dic
