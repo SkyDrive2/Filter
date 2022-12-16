@@ -13,6 +13,10 @@ load.close()
 length = len(js)
 all_url = []
 
+load2 = open("./projects/filter_after.filter_after.json" , "r" ,encoding="utf-8")
+js2 = json.load(load2)
+load2.close()
+
 for i in js:
     all_url.append(i['source'][0])
 
