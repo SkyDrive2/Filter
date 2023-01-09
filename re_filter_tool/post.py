@@ -1,17 +1,15 @@
+import os
 import requests
 import json
 
-IP = "localhost"
-PORT = "5000"
-POST_URL = f"http://{IP}:{PORT}/api/activities"
+HOST = "http://36.236.61.181:5044/api/activity"
 
-with open("./re_filter_tool/filter_after.json", "r", encoding="utf-8") as openFile:
-    JsonData = json.loads(openFile.read())
-    tempList = []
-    for index, post in enumerate(JsonData):
-        if index % 3 == 0 and index != 0:
-            requests.post(POST_URL, data=tempList)
-            tempList.clear()
-        tempList.append(post)
-    if len(tempList) != 0:
-        requests.post(POST_URL, data=tempList)
+json_file_name = 'filter_after'
+parent_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+with open(os.path.join(parent_path, json_file_name), "r") as json_file:
+    json_data = json.load(json_file)
+    r = requests.post(HOST, data=json_data)
+    if r.ok == 200:
+        print("上傳成功")
+    else:
+        print

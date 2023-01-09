@@ -61,9 +61,9 @@ for href in hrefs:
         "id" : 0,
     }
 
-    if not os.path.isfile("./projects/index.json"): # initailize the json file
-        with open("./projects/index.json", "w") as InitialFile:
-            InitialFile.write("[]")
+   # if os.path.isfile("./projects/index.json"): # initailize the json file
+    with open("./projects/index.json", "w") as InitialFile:
+        InitialFile.write("[]")
 
         
     with open("./projects/index.json", "r", encoding="utf-8") as JsonFile: #transfer the article dic to json 

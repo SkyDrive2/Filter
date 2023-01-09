@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import os
 import uuid
 import json
-import jieba
 import numpy as np
 url = "https://www.yda.gov.tw/"
 
