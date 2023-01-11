@@ -29,6 +29,7 @@ for entry in entrys:
         length = len(entry.text)
         if entry.text[length-2:length] != "公告":
             titles.append(entry.text.replace("\n","").replace("\xa0",""))
+            print(entry.text)
             urls.append("http://www.twctdf.com/"+entry.a['href'])
 
 for url in urls:
