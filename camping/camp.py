@@ -4,8 +4,11 @@ import os
 import json
 import re
 import uuid
-
-
+import datetime
+now = datetime.datetime.now()
+date_t = "上次更新時間為: " + str(now) 
+with open("C:\\Users\\aazz1\\OneDrive\\桌面\\store_code\\Filter\\re_filter_tool\\daily_crawler\\camping\\test.txt" , "w", encoding="utf-8") as writefile:
+    writefile.write(date_t)
 url = "https://students.tw/5599/"
 
 headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) C hrome/105.0.0.0 Safari/537.36"}
