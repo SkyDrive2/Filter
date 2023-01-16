@@ -38,10 +38,6 @@ def do_scan():
 while True:
     Time = get_time_now()
     print("\rtime:", Time, end="")
-    if Time == "00:00:00":
+    if Time == "20:42:00":
         do_scan()
-
-
-   
-
     time.sleep(1)
